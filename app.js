@@ -13,5 +13,5 @@ app.use(main);
 //     ctx.body = 'Hello World';
 // });
 
-app.listen(2000, '192.168.0.156');
+app.listen(2000, 'localhost');
 console.log('running 192.168.0.156:2000')
