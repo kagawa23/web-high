@@ -83,8 +83,8 @@
 
 
 # 第7章-浏览器存储   
-**回流：** 当 render tree中的一部分或全部因为元素的规模尺寸、布局、隐藏等改变而需要重新构建；当页面布局和几何属性改变时 
 - Cookie，维持客户端状态,由服务端http response header 的 set-cookie生成，客户端保存;JS document.cookie设置(客户端数据存储)；4KB;过期时间expire;HTTPonly（是否允许js读写）;cookie存储路径(path)  
+- Cookie，浏览器端与服务端交互，客户端自身的数据存储  
 - LocalStorage，用于浏览器存储；5M左右；仅在客户端使用；接口封装较好；浏览器本地缓存方案  
 - SessionStorage，会话级别浏览器存储；5M左右；仅在客户端使用；接口封装较好；用于表单信息的维护   
 - IndexedDB,客户端存储大量结构化数据；为应用创建离线版本  
