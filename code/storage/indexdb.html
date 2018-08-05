@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    var myDB = {
+        name:'employee',
+        version:1,
+        db:null
+    }
+    function openIndexDB(name,callback){
+        var request = window.indexedDB.open(name);
+        request.onsuccess = function(e){
+            myDB.db = e.target.result
+            console.log('create db');
+            callback && callback();
+        }
+        request.onerror = function(e) {
+                console.log('open indexdb error')
+        }
+        request.onupgradeneeded = function(e){
+            var store = request.result.createObjectStore('books',{
+                keyPath:'isbn'
+            })
+            var titleIndex = store.createIndex('by_title','title',{
+                unique:true
+            })
+            var authorIndex = store.createIndex('by_author','author')
+            store.put({
+                        title: 'Quarry Memories',
+                        author: 'Fred',
+                        isbn: 123456
+            })
+
+            store.put({
+                title: 'Water Buffaloes',
+                author: 'Fred',
+                isbn: 234567
+            })
+
+            store.put({
+                title: 'Bedrock Nights',
+                author: 'Barney',
+                isbn: 345678
+            })
+        }
+    }
+    function addData(db){
+        var transaction = db.transaction('books','readwrite');
+        var store = transaction.objectStore('books');
+        store.get(22).onsuccess = function(e){
+            books = e.target.result
+                console.log(books) 
+        }
+    }
+    openIndexDB(myDB.name,function(){
+        addData(myDB.db);
+    });
+</script>
+<body>
+    
+</body>
+</html>

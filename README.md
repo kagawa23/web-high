@@ -82,7 +82,10 @@
 - 启用GPU硬件加速  
 
 
-# 第7章-浏览器存储   
+# 第7章-浏览器存储  
+ chrome://serviceworker-internals/
+ chrome://inspect/#service-workers
+ service worker网站 https://mobile.twitter.com/
 - Cookie，维持客户端状态,由服务端http response header 的 set-cookie生成，客户端保存;JS document.cookie设置(客户端数据存储)；4KB;过期时间expire;HTTPonly（是否允许js读写）;cookie存储路径(path)  
 - Cookie，浏览器端与服务端交互，客户端自身的数据存储  
 - LocalStorage，用于浏览器存储；5M左右；仅在客户端使用；接口封装较好；浏览器本地缓存方案  
